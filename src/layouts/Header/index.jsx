@@ -6,27 +6,64 @@ import {
 } from "@ant-design/icons";
 import {Breadcrumb, Layout, Menu, theme} from "antd";
 const {Header, Content, Sider} = Layout;
-const items1 = ["1", "2", "3"].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-  (icon, index) => {
-    const key = String(index + 1);
-    return {
-      key: `sub${key}`,
-      icon: React.createElement(icon),
-      label: `subnav ${key}`,
-      children: new Array(4).fill(null).map((_, j) => {
-        const subKey = index * 4 + j + 1;
-        return {
-          key: subKey,
-          label: `option${subKey}`,
-        };
-      }),
-    };
+const items1 = [
+  {
+    key: "home",
+    label: (
+      <a href="/" rel="noopener noreferrer">
+        Home
+      </a>
+    ),
   },
-);
+  {
+    label: (
+      <a href="/ca" rel="noopener noreferrer">
+        Ca
+      </a>
+    ),
+    key: "Ca",
+  },
+  {
+    label: (
+      <a href="/ak247" rel="noopener noreferrer">
+        Ak247
+      </a>
+    ),
+    key: "ak247",
+  },
+];
+
+const items2 = [
+  {
+    icon: UserOutlined,
+    label: "User",
+    key: "user",
+  },
+  {
+    icon: LaptopOutlined,
+    label: "Report",
+    key: "report",
+  },
+  {
+    icon: NotificationOutlined,
+    label: "Notification",
+    key: "notification",
+  },
+].map((item, index) => {
+  const {key, icon, label} = item;
+  return {
+    key: key,
+    icon: React.createElement(icon),
+    label: label,
+    children: new Array(2).fill(null).map((_, j) => {
+      const subKey = j + 1;
+      return {
+        key: subKey,
+        label: `${label} ${subKey}`,
+      };
+    }),
+  };
+});
 const Wrapper = ({children}) => {
   const {
     token: {colorBgContainer, borderRadiusLG},

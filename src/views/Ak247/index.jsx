@@ -1,12 +1,12 @@
 import React from "react";
 import {Button} from "antd";
 
-function Export() {
+function Ak247() {
   return (
     <div style={{marginTop: "40px"}}>
-      <Button type="primary">Export</Button>
+      <Button type="primary">Ak247</Button>
     </div>
   );
 }
 
-export default Export;
+export default Ak247;
