@@ -2,10 +2,10 @@ import React from "react";
 import {
   LaptopOutlined,
   NotificationOutlined,
-  UserOutlined,
+  UserOutlined
 } from "@ant-design/icons";
-import {Breadcrumb, Layout, Menu, theme} from "antd";
-const {Header, Content, Sider} = Layout;
+import { Breadcrumb, Layout, Menu, theme } from "antd";
+const { Header, Content, Sider } = Layout;
 const items1 = [
   {
     key: "home",
@@ -13,7 +13,7 @@ const items1 = [
       <a href="/" rel="noopener noreferrer">
         Home
       </a>
-    ),
+    )
   },
   {
     label: (
@@ -21,7 +21,7 @@ const items1 = [
         Ca
       </a>
     ),
-    key: "Ca",
+    key: "Ca"
   },
   {
     label: (
@@ -29,28 +29,28 @@ const items1 = [
         Ak247
       </a>
     ),
-    key: "ak247",
-  },
+    key: "ak247"
+  }
 ];
 
 const items2 = [
   {
     icon: UserOutlined,
     label: "User",
-    key: "user",
+    key: "user"
   },
   {
     icon: LaptopOutlined,
     label: "Report",
-    key: "report",
+    key: "report"
   },
   {
     icon: NotificationOutlined,
     label: "Notification",
-    key: "notification",
-  },
+    key: "notification"
+  }
 ].map((item, index) => {
-  const {key, icon, label} = item;
+  const { key, icon, label } = item;
   return {
     key: key,
     icon: React.createElement(icon),
@@ -58,22 +58,22 @@ const items2 = [
     children: new Array(2).fill(null).map((_, j) => {
       const subKey = j + 1;
       return {
-        key: subKey,
-        label: `${label} ${subKey}`,
+        key: subKey + key,
+        label: `${label} ${subKey}`
       };
-    }),
+    })
   };
 });
-const Wrapper = ({children}) => {
+const Wrapper = ({ children }) => {
   const {
-    token: {colorBgContainer, borderRadiusLG},
+    token: { colorBgContainer, borderRadiusLG }
   } = theme.useToken();
   return (
-    <Layout style={{height: "100vh"}}>
+    <Layout style={{ height: "100vh" }}>
       <Header
         style={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <div className="demo-logo" />
@@ -84,7 +84,7 @@ const Wrapper = ({children}) => {
           items={items1}
           style={{
             flex: 1,
-            minWidth: 0,
+            minWidth: 0
           }}
         />
       </Header>
@@ -92,7 +92,7 @@ const Wrapper = ({children}) => {
         <Sider
           width={200}
           style={{
-            background: colorBgContainer,
+            background: colorBgContainer
           }}
         >
           <Menu
@@ -101,24 +101,22 @@ const Wrapper = ({children}) => {
             defaultOpenKeys={["sub1"]}
             style={{
               height: "100%",
-              borderRight: 0,
+              borderRight: 0
             }}
             items={items2}
           />
         </Sider>
         <Layout
           style={{
-            padding: "0 24px 24px",
+            padding: "0 24px 24px"
           }}
         >
           <Breadcrumb
             style={{
-              margin: "16px 0",
+              margin: "16px 0"
             }}
           >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
+            <Breadcrumb.Item key={"home"}>Home</Breadcrumb.Item>
           </Breadcrumb>
           <Content
             style={{
@@ -126,7 +124,7 @@ const Wrapper = ({children}) => {
               margin: 0,
               minHeight: 280,
               background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+              borderRadius: borderRadiusLG
             }}
           >
             {children}

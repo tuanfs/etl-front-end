@@ -1,8 +1,10 @@
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Header from "./layouts/Header";
 import Ca from "./views/Ca";
 import Ak247 from "./views/Ak247";
+import "./assets/styles/main.css";
+import "./assets/styles/responsive.css";
 
 export default function App() {
   return (
