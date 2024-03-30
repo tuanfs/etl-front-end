@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Button, message } from "antd";
-import { ProTable, ProFormText } from "@ant-design/pro-components";
+import React, {useState} from "react";
+import {Button, message} from "antd";
+import {ProTable, ProFormText} from "@ant-design/pro-components";
 import axios from "axios";
 
 function Ak247() {
@@ -13,14 +13,14 @@ function Ak247() {
           dataIndex: "name",
           renderFormItem: () => (
             <ProFormText placeholder="Tên ticket" name="ticket-name" />
-          )
+          ),
         },
         {
           title: "Mã yêu cầu",
           dataIndex: "number",
           renderFormItem: () => (
             <ProFormText placeholder="Mã yêu cầu" name="ticket-number" />
-          )
+          ),
         },
         {
           title: "Trạng thái",
@@ -28,7 +28,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Channel",
@@ -36,7 +36,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Dịch vụ",
@@ -44,7 +44,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Cán bộ xử lý",
@@ -52,7 +52,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Nhóm",
@@ -60,7 +60,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Loại",
@@ -68,7 +68,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Ngày tạo",
@@ -76,7 +76,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Người yêu cầu",
@@ -84,7 +84,7 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
+          ),
         },
         {
           title: "Người tạo",
@@ -92,15 +92,15 @@ function Ak247() {
           hideInSearch: true,
           renderFormItem: () => (
             <ProFormText placeholder="Tuổi" name="input-password" />
-          )
-        }
+          ),
+        },
       ]}
       pagination={{
         defaultPageSize: 25,
         pageSizeOptions: [25, 50, 100],
         responsive: true,
         locale: {
-          items_per_page: "/ Trang"
+          items_per_page: "/ Trang",
         },
         showTotal: (total, range) => {
           return `Hiển thị ${range[0]}-${range[1]} trên ${total} dòng`;
@@ -110,7 +110,7 @@ function Ak247() {
         },
         onChange: (page, pageSize) => {
           const offset = pageSize * page - pageSize;
-        }
+        },
       }}
       rowKey={"number"}
       search={{
@@ -135,7 +135,7 @@ function Ak247() {
                     content: "Tạo report thành công. Kiểm tra trên power bi",
                     top: 100,
                     duration: 2,
-                    prefixCls: "my-message"
+                    prefixCls: "my-message",
                   });
                   console.log(response);
                 })
@@ -144,7 +144,7 @@ function Ak247() {
                     content: "Tạo report thất bại. Kiểm tra trên power bi",
                     top: 100,
                     duration: 2,
-                    prefixCls: "my-message"
+                    prefixCls: "my-message",
                   });
                   console.log(error.message);
                   return {};
@@ -152,17 +152,19 @@ function Ak247() {
             }}
           >
             Tạo report
-          </Button>
-        ]
+          </Button>,
+        ],
       }}
       request={async (params, sort, filter) => {
-        const response = await axios.get("http://localhost:3004/ak247/tickets");
-        const data = response.data || [];
+        const response = await axios
+          .get("http://localhost:3004/ak247/tickets")
+          .catch(() => {});
+        const data = response?.data || [];
 
         return {
           data,
           success: true,
-          total: response.data.length
+          total: response?.data?.length,
         };
       }}
     />
