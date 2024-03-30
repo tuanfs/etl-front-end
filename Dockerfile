@@ -3,7 +3,7 @@ WORKDIR /usr/src
 
 COPY . .
 
-RUN npm install && npm run build
+RUN rm -rf build && rm -rf node_modules && npm install && npm run build
 
 FROM nginx:alpine
 
